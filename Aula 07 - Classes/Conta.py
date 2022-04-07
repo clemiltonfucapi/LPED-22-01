@@ -42,15 +42,35 @@ class Conta:
         
         
             
-c1 = Conta('1111-x', 1000)
-c2 = Conta('2222-y', 1500)
+##c1 = Conta('1111-x', 1000)
+##c2 = Conta('2222-y', 1500)
+##
+##c1.transfere(c2,200)
+##print(c1)
+##print(c2)
+##c2.transfere(c1,450)
+##print(c1)
+##print(c2)
+num_conta = input('Digite o codigo da conta')
+saldo = float(input('DIgite o saldo da conta'));
 
-c1.transfere(c2,200)
+c1 = Conta(num_conta, saldo)
 print(c1)
-print(c2)
-c2.transfere(c1,450)
-print(c1)
-print(c2)
+
+op = input('Deseja fazer alguma operação?\n 1 - Realizar saque \n 2 - Realizar deposito ')
+
+if(op=='1'):
+    # realizar saque
+    saque = float(input('DIgite o valor do saque '))
+    c1.saque(saque)
+elif(op=='2'):
+    saque = float(input('DIgite o valor do deposito '))
+    c1.deposito(saque)
+
+
+
+
+
 
 
 
