@@ -30,11 +30,29 @@ class Conta:
             print('Valor nao é numero!')
             return None
         self.saldo+=valor
+
+    def transfere(self,contaDestino,valor):
+
+        if( not isinstance(contaDestino,Conta) ): # caso contaDestino 
+             print('Conta Invalida')              # NÃO seja uma conta
+             return None
+        
+        self.saque(valor) # tirando valor da conta origem
+        contaDestino.deposito(valor) # deposito conta destino
+        
         
             
-##c1 = Conta('1111-x',1000)
-##print(c1)
-##c1.saque(200)
-##print(c1)
-##c1.deposito(400)
-##print(c1)
+c1 = Conta('1111-x', 1000)
+c2 = Conta('2222-y', 1500)
+
+c1.transfere(c2,200)
+print(c1)
+print(c2)
+c2.transfere(c1,450)
+print(c1)
+print(c2)
+
+
+
+
+           
