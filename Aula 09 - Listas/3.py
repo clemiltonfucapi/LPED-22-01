@@ -31,11 +31,58 @@ class Lista:
         temp.botaProximo(self.inicio)
         self.inicio = temp
 
+    def imprimir(self):
+        atual = self.inicio
+        while atual != None:
+            print(atual.pegaDado())
+            atual = atual.pegaProximo()
+    def __str__(self):
+        string = ''
+        atual = self.inicio
+        while atual != None:
+            string += str( atual.pegaDado()  ) + ' -> '
+            atual = atual.pegaProximo()
+        string+= 'None'
+        
+        return string
 
-
+    def buscar(self,item):
+        atual = self.inicio
+        while atual != None:
+            if atual.pegaDado() == item:
+                return True #encontrou elemento
+            atual = atual.pegaProximo()
+        return False
+            
 
 myList = Lista()
 print(myList)
 myList.inserir(17)
 myList.inserir(28)
 myList.inserir(36)
+print(myList)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
