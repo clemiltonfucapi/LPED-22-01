@@ -54,18 +54,45 @@ class Lista:
             atual = atual.pegaProximo()
         return False
 
-    def tamanho(self): # retornar o tamanho da lista
+    def tamanho(self):
         atual = self.inicio
         cont = 0
-        while atual != None:
+        while atual!=None:
             cont = cont + 1
-
-            atual = atual.pegaProximo()
+            atual = atual.proximo
         return cont
-            
 
-    
-            
+    def remover(self, item):
+        ## caso seja no inicio
+        if( self.inicio.pegaDado() == item):
+            self.inicio = self.inicio.pegaProximo()
+            return None
+
+        # ponteiro previo e atual (começar 2º elem. )
+        previo = self.inicio
+        atual = previo.pegaProximo()
+
+        ## percorrer até o fim
+        while atual != None:
+            if (atual.pegaDado() == item):
+                # pular o elemento a ser retirado
+                previo.botaProximo( atual.pegaProximo() )
+                return None # removeu o elemento
+
+            previo = previo.pegaProximo()
+            atual = atual.pegaProximo()
+
+        print('Não encontrou elemento ')
+
+    def inserir_fim(self,item):
+        novo = No(item)
+        atual = self.inicio
+        ## percorrer até o ULTIMO elemento
+        while (atual.pegaProximo() != None):
+            atual = atual.pegaProximo()
+
+        # ligar o novo nó
+        atual.botaProximo(novo)
 
 myList = Lista()
 print(myList)
@@ -73,4 +100,28 @@ myList.inserir(17)
 myList.inserir(28)
 myList.inserir(36)
 print(myList)
+print(myList.tamanho())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
