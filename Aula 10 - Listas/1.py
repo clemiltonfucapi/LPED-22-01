@@ -17,10 +17,23 @@ class No:
 class Lista:
     def __init__(self):
         self.inicio = None # primeiro elemento vazio
+        self.atual = None
+        
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.inicio == None or self.atual == None:
+            raise StopIteration
+
+        t = self.atual
+        self.atual  = self.atual.prox
+        return t
 
     # retorna True, caso lista vazia
     def vazia(self):
         return self.inicio == None
+    
     
     # inserir um elemento NO INICIO da lista
     def inserir(self,item):
@@ -30,6 +43,7 @@ class Lista:
         # colocar o nó no Inicio
         temp.botaProximo(self.inicio)
         self.inicio = temp
+        self.atual = self.inicio
 
     def imprimir(self):
         atual = self.inicio
